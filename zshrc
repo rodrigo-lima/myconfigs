@@ -6,8 +6,6 @@ export ZSH=/Users/rolima/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="kolo"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="muse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -29,7 +27,7 @@ ZSH_THEME="kolo"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -51,18 +49,29 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git colored-man-pages docker docker-compose xcode golang)
 
 # User configuration
-
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-export J2OBJC_HOME=/Users/rolima/Work/CODE/GITHUB/j2objc/dist
+export GOPATH=$HOME/Work/CODE/GOLANG
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export JDEV_HOME=$HOME/Oracle/Middleware/Oracle_Home/jdeveloper
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.gem/ruby/2.0.0/bin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+export TERM="xterm-256color"
+
+# if you do a 'rm *', Zsh will give you a sanity check!
+setopt RM_STAR_WAIT
+# allows you to type Bash style comments on your command line
+setopt interactivecomments
+# Zsh has a spelling corrector
+setopt CORRECT
+
+#export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --follow --exclude .git'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -85,12 +94,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#source "$HOME/.antigen/antigen.zsh"
-#
-#antigen-use oh-my-zsh
-#antigen-bundle arialdomartini/oh-my-git
-#antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
-#
-#antigen-apply
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -20,65 +20,65 @@
 
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	eol = lf
-	autocrlf = input
-	excludesfile = ~/.gitignore_global
+    eol = lf
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
 
 [alias]
-    st = status
-    ci = commit
     br = branch
+    ci = commit
     co = checkout
-    fo = fetch origin --prune
     df = diff
-    lg = log -p
-    l =  log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    fo = fetch origin --prune
     ls = ls-files
-    p = pull ; git submodule foreach git pull
-    ksreview = "!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f"
+    st = status
+    stats = shortlog -sn
+    ; lg = log -p
+    ; l =  log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    ; lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    ; lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ; p = pull ; git submodule foreach git pull
 
 [user]
-	email = rodrigo.lima@gmail.com
-	name = Rodrigo Lima
+    email = rodrigo.lima@oracle.com
+    name = Rodrigo Lima
 
 [github]
-	user = rodrigo.lima@gmail.com
-	token = ABCD___SOMETHING
+    user = rodrigo.lima@gmail.com
+    token = ABCD___SOMETHING
 
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [diff]
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 
 [difftool]
-	prompt = false
+    prompt = false
 
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
 
 [mergetool]
-	prompt = false
+    prompt = false
 
 [merge]
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+    path =
 
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+    cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
 
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 
 [push]
-	default = simple
+    default = simple

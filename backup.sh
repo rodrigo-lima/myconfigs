@@ -14,5 +14,8 @@ echo "VIM...."
 cp -v $HOME/.vimrc ${PROGDIR}/vimrc
 cp -vR $HOME/.vim ${PROGDIR}/vim
 
+echo "BREW..."
+brew list --versions > brews
+
 
 # EOF
