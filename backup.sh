@@ -14,7 +14,7 @@ echo "VIM...."
 cp -v $HOME/.vimrc ${PROGDIR}/vimrc
 cp -vR $HOME/.vim/autoload/ ${PROGDIR}/vim/autoload
 cp -vR $HOME/.vim/colors/ ${PROGDIR}/vim/colors
-cp -vR $HOME/.vim/plugged/ ${PROGDIR}/vim/plugged
+##  cp -vR $HOME/.vim/plugged/ ${PROGDIR}/vim/plugged
 
 echo "BREW..."
 brew list --versions > brews
