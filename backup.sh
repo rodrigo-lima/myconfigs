@@ -12,7 +12,9 @@ cp -v $HOME/.gitignore_global ${PROGDIR}/gitignore_global
 
 echo "VIM...."
 cp -v $HOME/.vimrc ${PROGDIR}/vimrc
-cp -vR $HOME/.vim ${PROGDIR}/vim
+cp -vR $HOME/.vim/autoload/ ${PROGDIR}/vim/autoload
+cp -vR $HOME/.vim/colors/ ${PROGDIR}/vim/colors
+cp -vR $HOME/.vim/plugged/ ${PROGDIR}/vim/plugged
 
 echo "BREW..."
 brew list --versions > brews

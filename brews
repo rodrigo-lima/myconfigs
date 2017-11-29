@@ -7,6 +7,7 @@ clang-format 2017-06-22
 cloc 1.74
 cmake 3.10.0
 coreutils 8.28_1
+ctags 5.8_1
 ctop 0.6.1
 delve 1.0.0-rc.2
 dep 0.3.2
@@ -32,7 +33,7 @@ harfbuzz 1.7.1
 htop 2.0.2
 httpie 0.9.9
 httpstat 1.2.1
-hugo 0.31
+hugo 0.31.1
 icu4c 59.1_1
 imagemagick 7.0.7-11
 jemalloc 5.0.1
@@ -61,6 +62,7 @@ pcre 8.41
 perl 5.26.1
 pixman 0.34.0_1
 pkg-config 0.29.2
+pngcheck 2.3.0_1
 pre-commit 1.4.1
 python 2.7.14
 python3 3.6.3
@@ -75,9 +77,9 @@ tig 2.3.0
 tmux 2.6
 tree 1.7.0
 unibilium 1.2.1
-vim 8.0.1300
-webp 0.6.0_2
+vim 8.0.1350
+webp 0.6.1
 xz 5.2.3
 yarn 1.3.2
-youtube-dl 2017.11.15
+youtube-dl 2017.11.26
 zsh-xcode-completions 1.2.0
