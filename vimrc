@@ -50,6 +50,7 @@ Plug 'dkprice/vim-easygrep'
 Plug 'sheerun/vim-polyglot'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
 " sessions
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
@@ -106,7 +107,7 @@ set autowrite
 set backspace=indent,eol,start
 set cmdheight=2               " command line two lines high
 set clipboard=unnamed
-set colorcolumn=90
+set colorcolumn=120
 set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
 set cursorline
 set diffopt=filler,iwhite     " ignore all whitespace and sync
@@ -225,8 +226,8 @@ nmap <leader>e :NERDTreeToggle<CR>
 nmap <leader>j :NERDTreeFind<CR>
 nmap <leader>p :FZF<CR>
 " save/quit
-nmap <leader>w :w!<cr>
-nmap <leader>W :wa!<cr>
+nmap <leader>W :w!<cr>
+nmap <leader>w :wa!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>Q :qa!<cr>
 nmap <leader><Esc> :wqa<cr>
@@ -248,6 +249,7 @@ nnoremap \ :noh<return>
 " SESSIONS {{{
 " let g:session_autosave = 'yes'
 " let g:session_autoload = 'yes'
+let g:session_autoload = 'no'
 " }}}
 
 " -----------------------------------------------
