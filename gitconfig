@@ -33,6 +33,7 @@
     ls = ls-files
     st = status
     stats = shortlog -sn
+    rev = rev-list --reverse --pretty=format:'DIFFs %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --cherry-pick --right-only
     ; lg = log -p
     ; l =  log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     ; lol = log --graph --decorate --pretty=oneline --abbrev-commit

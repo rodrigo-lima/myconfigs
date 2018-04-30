@@ -55,7 +55,7 @@ plugins=(git colored-man-pages docker docker-compose xcode golang)
 export GOPATH=$HOME/Work/CODE/GOLANG
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export JDEV_HOME=$HOME/Oracle/Middleware/Oracle_Home/jdeveloper
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.gem/ruby/2.0.0/bin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.gem/ruby/2.5.0/bin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
 
 source $ZSH/oh-my-zsh.sh
 

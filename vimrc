@@ -26,6 +26,7 @@ let g:seoul256_background = 236
 colorscheme seoul256
 let g:enable_bold_font = 1
 let g:enable_italic_font = 1
+let g:seoul256_srgb = 1
 if !has('gui_running')
     set t_Co=256
 endif
@@ -48,16 +49,17 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dkprice/vim-easygrep'
 " syntax
 Plug 'sheerun/vim-polyglot'
-Plug 'artur-shaik/vim-javacomplete2'
 Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
 " sessions
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 " deoplete
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'artur-shaik/vim-javacomplete2'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
 
 "" ~~~~~~~ not used ~~~~~~~
 " Plug 'Shougo/denite.nvim'
@@ -167,14 +169,14 @@ let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 " -----------------------------------------------
 " DEOPLETE {{{
 "" Automatically start language servers.
-let g:deoplete#enable_at_startup = 1
-"" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-"" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" let g:deoplete#enable_at_startup = 1
+" "" <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+" "" deoplete tab-complete
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " easytags
 let g:easytags_syntax_keyword = 'always'
@@ -182,10 +184,10 @@ let g:easytags_syntax_keyword = 'always'
 
 " -----------------------------------------------
 " JAVA {{{
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-let g:JavaComplete_LibsPath='/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/commons-cli-1.2.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/gcm.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/javax.json.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/ksoap2-j2me-core-2.1.2.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/kxml2-2.3.0.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.amx.api.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.amx.impl.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.api.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.cdm.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.framework.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.j2me.connections.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.java.common.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.java.shared.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.juel.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/sqlite.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/wsm-agent-common.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/wsm-common-platform.jar'
-" let g:JavaComplete_JavaviLogfileDirectory = '/tmp'
-" let g:JavaComplete_JavaviDebug = 1
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" let g:JavaComplete_LibsPath='/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/commons-cli-1.2.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/gcm.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/javax.json.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/ksoap2-j2me-core-2.1.2.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/kxml2-2.3.0.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.amx.api.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.amx.impl.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.api.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.cdm.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.embedded.framework.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.j2me.connections.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.java.common.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.java.shared.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/maf.juel.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/sqlite.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/wsm-agent-common.jar:/Users/rolima/Work/CODE/FUSIONTAP/OTHER/libs/wsm-common-platform.jar'
+" " let g:JavaComplete_JavaviLogfileDirectory = '/tmp'
+" " let g:JavaComplete_JavaviDebug = 1
 " }}}
 
 " -----------------------------------------------
@@ -197,16 +199,39 @@ augroup END
 " }}}
 
 " -----------------------------------------------
+" SWIFT {{{
+augroup filetype_swift
+    autocmd!
+    autocmd VimEnter * nested :TagbarOpen
+ augroup END
+let g:tagbar_type_swift = {
+  \ 'ctagstype': 'swift',
+  \ 'kinds' : [
+    \ 'n:Enums',
+    \ 't:Typealiases',
+    \ 'p:Protocols',
+    \ 's:Structs',
+    \ 'c:Classes',
+    \ 'f:Functions',
+    \ 'v:Variables',
+    \ 'e:Extensions'
+  \ ],
+  \ 'sort' : 0
+\ }
+" }}}
+
+" -----------------------------------------------
 " GOLANG {{{
 augroup filetype_go
     autocmd!
+    autocmd VimEnter * nested :TagbarOpen
     autocmd FileType go nmap <leader>b <Plug>(go-build)
-    autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+    " autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
     autocmd FileType go nmap <Leader>i <Plug>(go-info)
     autocmd FileType go nmap <leader>r <Plug>(go-run)
-    autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
-    autocmd FileType go nmap <leader>t <Plug>(go-test)
-    autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+    " autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+    " autocmd FileType go nmap <leader>t <Plug>(go-test)
+    " autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
     autocmd FileType go nmap <C-g> :GoDeclsDir<cr>
     autocmd FileType go imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 augroup END
@@ -217,6 +242,35 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
 " }}}
 
 " -----------------------------------------------
@@ -225,7 +279,9 @@ let g:go_highlight_generate_tags = 1
 nmap <leader>e :NERDTreeToggle<CR>
 nmap <leader>j :NERDTreeFind<CR>
 nmap <leader>p :FZF<CR>
+nmap <leader>T :Tagbar<CR>
 " save/quit
+nmap <leader>c :close<cr>
 nmap <leader>W :w!<cr>
 nmap <leader>w :wa!<cr>
 nmap <leader>q :q<cr>
