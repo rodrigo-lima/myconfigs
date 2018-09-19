@@ -4,6 +4,7 @@
 " Main Stuff {{{
 set nocompatible
 syntax on
+set encoding=UTF-8
 " }}}
 
 " -----------------------------------------------
@@ -41,15 +42,17 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'mhinz/vim-startify'
 "  git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 " grep
 Plug 'dkprice/vim-easygrep'
 " syntax
-Plug 'sheerun/vim-polyglot'
-Plug 'xolox/vim-easytags'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'xolox/vim-easytags'
+"
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 " sessions
@@ -140,6 +143,7 @@ set shell=/bin/zsh
 set shiftwidth=4
 set showcmd
 set showmatch                 " show matching bracket
+set showtabline=2             " show tabbar
 set sidescrolloff=5           " keep at least 5 lines left/right
 set signcolumn=yes"
 set smarttab                  " tab and backspace are smart
@@ -156,7 +160,7 @@ set wildmode=longest,list:full
 " }}}
 
 " -----------------------------------------------
-" NerdTree {{{
+" NERD_TREE {{{
 let g:NERDTreeWinSize=50
 let g:Tlist_WinWidth=50
 let NERDTreeMapActivateNode='<right>'
@@ -177,9 +181,16 @@ let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" }}}
 
-" easytags
-let g:easytags_syntax_keyword = 'always'
+" -----------------------------------------------
+" EASYTAGS {{{
+" let g:easytags_syntax_keyword = 'always'
+" }}}
+
+" -----------------------------------------------
+" COMMENTER {{{
+" see https://github.com/scrooloose/nerdcommenter
 " }}}
 
 " -----------------------------------------------
@@ -199,6 +210,29 @@ augroup END
 " }}}
 
 " -----------------------------------------------
+" KOTLIN {{{
+augroup filetype_kotlin
+    autocmd!
+    autocmd VimEnter * nested :TagbarOpen
+ augroup END
+let g:tagbar_type_kotlin = {
+  \ 'ctagstype': 'kotlin',
+  \ 'kinds' : [
+    \ 'c:Classes',
+    \ 'dc:DataClasses',
+    \ 'co:Constants',
+    \ 'i:Interfaces',
+    \ 'm:Methods',
+    \ 'o:Objects',
+    \ 'p:Imports:1',
+    \ 'T:Types',
+    \ 'va:Variables:1'
+  \ ],
+  \ 'sort' : 0
+\ }
+" }}}
+
+" -----------------------------------------------
 " SWIFT {{{
 augroup filetype_swift
     autocmd!
@@ -213,7 +247,7 @@ let g:tagbar_type_swift = {
     \ 's:Structs',
     \ 'c:Classes',
     \ 'f:Functions',
-    \ 'v:Variables',
+    \ 'v:Variables:1',
     \ 'e:Extensions'
   \ ],
   \ 'sort' : 0
@@ -233,6 +267,7 @@ augroup filetype_go
     " autocmd FileType go nmap <leader>t <Plug>(go-test)
     " autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
     autocmd FileType go nmap <C-g> :GoDeclsDir<cr>
+    autocmd FileType go nmap <C-b> :GoDef<cr>
     autocmd FileType go imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 augroup END
 let g:go_auto_sameids = 1
