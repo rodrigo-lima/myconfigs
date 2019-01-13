@@ -57,7 +57,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 " sessions
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+"Plug 'xolox/vim-session'
 " deoplete
 " Plug 'artur-shaik/vim-javacomplete2'
 " Plug 'Shougo/deoplete.nvim'
@@ -340,7 +340,7 @@ nnoremap \ :noh<return>
 " SESSIONS {{{
 " let g:session_autosave = 'yes'
 " let g:session_autoload = 'yes'
-let g:session_autoload = 'no'
+" let g:session_autoload = 'no'
 " }}}
 
 " -----------------------------------------------

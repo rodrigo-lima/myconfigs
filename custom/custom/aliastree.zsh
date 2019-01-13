@@ -8,7 +8,9 @@
 alias tree='tree -C -sh'
 alias virc='vim ~/.vimrc'
 alias vizc='vim ~/.zshrc'
-alias fixbrew='sudo chown -R $(whoami) $(brew --prefix)/*'
+#alias fixbrew='sudo chown -R $(whoami) $(brew --prefix)/*'
+alias fixbrew='sudo chown -R $(whoami) /usr/local/bin /usr/local/lib'
+
 #alias syncDevTools='rsync -ahv --delete --timeout=10 --exclude=.git --exclude "**/*.ipa" --exclude "**/*.apk" --exclude "**/*.mp4" --exclude "**/*.zip" -P mwheatle@oracletap-ci.us.oracle.com:/Users/mwheatle/Work/AUTOMATION/DevTools/ $HOME/Work/AUTOMATION/DevTools'
 
 # -----------------------------------------

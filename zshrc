@@ -14,6 +14,14 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export JDEV_HOME=$HOME/Oracle/Middleware/OH_12.2.1.3/jdeveloper
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.gem/ruby/2.5.0/bin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
 
+# ADE
+export PATH="/usr/local/dev_infra/platform/bin:/usr/local/dev_infra/generic/bin:$PATH"
+export ADE_SITE=ade_fusion_slc
+export ADE_DEFAULT_VIEW_STORAGE_LOC=/net/`hostname -s`/scratch/$USER/view_storage
+export ADE_DEFAULT_TWORK_STORAGE_LOC=/net/`hostname -s`/scratch/$USER/view_storage
+export ADE_AUTO_MAP=disabled
+
+# OH_MY_ZSH
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -46,5 +54,10 @@ SPACESHIP_USER_SHOW=true
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_EXIT_CODE_PREFIX=[
 SPACESHIP_EXIT_CODE_SUFFIX=]
+#SPACESHIP_SWIFT_SHOW_GLOBAL=true
 
+unalias grv
 # EOF ####
+# fpath=(~/.zsh $Ifpath)
+
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
