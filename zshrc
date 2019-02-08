@@ -6,20 +6,20 @@ ZSH_THEME="spaceship"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git colored-man-pages docker xcode golang swift node npm yarn)
+plugins=(git colored-man-pages docker xcode golang swift node npm yarn gradle)
 
 # User configuration
 export GOPATH=$HOME/Work/CODE/GOLANG
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export JDEV_HOME=$HOME/Oracle/Middleware/OH_12.2.1.3/jdeveloper
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.gem/ruby/2.5.0/bin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
+export PATH="/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:/scratch/helium/bin"
+
 
 # ADE
-export PATH="/usr/local/dev_infra/platform/bin:/usr/local/dev_infra/generic/bin:$PATH"
-export ADE_SITE=ade_fusion_slc
-export ADE_DEFAULT_VIEW_STORAGE_LOC=/net/`hostname -s`/scratch/$USER/view_storage
-export ADE_DEFAULT_TWORK_STORAGE_LOC=/net/`hostname -s`/scratch/$USER/view_storage
-export ADE_AUTO_MAP=disabled
+#export ADE_SITE=ade_fusion_slc
+#export ADE_DEFAULT_VIEW_STORAGE_LOC=/net/`hostname -s`/scratch/$USER/view_storage
+#export ADE_DEFAULT_TWORK_STORAGE_LOC=/net/`hostname -s`/scratch/$USER/view_storage
+#export ADE_AUTO_MAP=disabled
 
 # OH_MY_ZSH
 source $ZSH/oh-my-zsh.sh
