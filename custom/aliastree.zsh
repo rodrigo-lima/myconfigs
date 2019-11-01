@@ -10,8 +10,12 @@ alias virc='vim ~/.vimrc'
 alias vizc='vim ~/.zshrc'
 #alias fixbrew='sudo chown -R $(whoami) $(brew --prefix)/*'
 alias fixbrew='sudo chown -R $(whoami) /usr/local/bin /usr/local/lib'
+alias pipua="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 
 #alias syncDevTools='rsync -ahv --delete --timeout=10 --exclude=.git --exclude "**/*.ipa" --exclude "**/*.apk" --exclude "**/*.mp4" --exclude "**/*.zip" -P mwheatle@oracletap-ci.us.oracle.com:/Users/mwheatle/Work/AUTOMATION/DevTools/ $HOME/Work/AUTOMATION/DevTools'
+
+bxcc() { eval $(bx cs cluster-config --export $1) }
+alias unbxcc='export KUBECONFIG='
 
 # -----------------------------------------
 # GIT stuff

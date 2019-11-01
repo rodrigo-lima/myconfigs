@@ -42,8 +42,8 @@
     ; p = pull ; git submodule foreach git pull
 
 [user]
-	email = rodrigo.lima@oracle.com
-	name = Rodrigo Lima
+    email = rodrigo.lima@ibm.com
+    name = Rodrigo Lima
 
 [github]
     user = rodrigo.lima@gmail.com

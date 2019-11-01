@@ -19,9 +19,9 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 "
 set background=dark
-set term=screen-256color
+"set term=screen-256color
 "colorscheme Tomorrow-Night
-" colorscheme hybrid_material
+"colorscheme hybrid_material
 "colorscheme wombat
 let g:seoul256_background = 236
 colorscheme seoul256
@@ -38,14 +38,16 @@ endif
 call plug#begin('~/.vim/plugged')
 " status
 Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/landscape.vim'
+
 " files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
 "  git
 " Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " grep
 Plug 'dkprice/vim-easygrep'
@@ -57,7 +59,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 " sessions
 Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
+Plug 'xolox/vim-session'
 " deoplete
 " Plug 'artur-shaik/vim-javacomplete2'
 " Plug 'Shougo/deoplete.nvim'
@@ -160,14 +162,38 @@ set wildmode=longest,list:full
 " }}}
 
 " -----------------------------------------------
+" LIGHTLINE {{{
+
+"colorscheme material
+let g:material_theme_style = 'default'
+"| 'palenight' | 'dark'
+let g:lightline = { 'colorscheme': 'material_vim' }
+
+let g:netrw_list_hide = netrw_gitignore#Hide()
+
+"let g:lightline = {
+"      \ 'colorscheme': 'wombat',
+"      \ }
+" }}}
+
+" -----------------------------------------------
 " NERD_TREE {{{
-let g:NERDTreeWinSize=50
-let g:Tlist_WinWidth=50
-let NERDTreeMapActivateNode='<right>'
+" let g:NERDTreeWinSize=50
+" let g:Tlist_WinWidth=50
+" let NERDTreeMapActivateNode='<right>'
 "let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
+" let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd p
+" }}}
+
+" -----------------------------------------------
+" NETRW {{{
+let g:netrw_banner=0
+let g:netrw_winsize=20
+let g:netrw_liststyle=3
+" let g:netrw_localrmdir='rm -r'
+"toggle netrw on the left side of the editor
 " }}}
 
 " -----------------------------------------------
@@ -311,8 +337,9 @@ let g:tagbar_type_go = {
 " -----------------------------------------------
 " KEY BINDINGS {{{
 " files - nerdtree & fzf
-nmap <leader>e :NERDTreeToggle<CR>
-nmap <leader>j :NERDTreeFind<CR>
+" nmap <leader>e :NERDTreeToggle<CR>
+" nmap <leader>j :NERDTreeFind<CR>
+nnoremap <leader>n :Lexplore<CR>
 nmap <leader>p :FZF<CR>
 nmap <leader>T :Tagbar<CR>
 " save/quit
@@ -338,9 +365,10 @@ nnoremap \ :noh<return>
 
 " -----------------------------------------------
 " SESSIONS {{{
-" let g:session_autosave = 'yes'
+let g:session_autosave = 'no'
 " let g:session_autoload = 'yes'
 " let g:session_autoload = 'no'
+set viminfo='100,n$HOME/.vim/files/info/viminfo
 " }}}
 
 " -----------------------------------------------
