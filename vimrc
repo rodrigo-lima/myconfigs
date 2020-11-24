@@ -31,54 +31,8 @@ let g:seoul256_srgb = 1
 if !has('gui_running')
     set t_Co=256
 endif
-" }}}
 
-" -----------------------------------------------
-" PLUGINS {{{
-call plug#begin('~/.vim/plugged')
-" status
-Plug 'itchyny/lightline.vim'
-" Plug 'itchyny/landscape.vim'
-
-" files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'ryanoasis/vim-devicons'
-Plug 'mhinz/vim-startify'
-"  git
-" Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" grep
-Plug 'dkprice/vim-easygrep'
-" syntax
-" Plug 'sheerun/vim-polyglot'
-" Plug 'xolox/vim-easytags'
-"
-Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdcommenter'
-" sessions
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-" deoplete
-" Plug 'artur-shaik/vim-javacomplete2'
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
-
-"" ~~~~~~~ not used ~~~~~~~
-" Plug 'Shougo/denite.nvim'
-"" (Optional) Completion integration with deoplete.
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"" (Optional) Completion integration with nvim-completion-manager.
-"Plug 'roxma/nvim-completion-manager'
-"" (Optional) Showing function signature and inline doc.
-"Plug 'Shougo/echodoc.vim'
-"Plug 'vim-syntastic/syntastic'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'fatih/vim-go'
-
-call plug#end()
+hi Normal ctermbg=none
 " }}}
 
 " -----------------------------------------------

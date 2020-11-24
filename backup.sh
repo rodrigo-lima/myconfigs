@@ -4,7 +4,7 @@ readonly PROGDIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
 echo "ZSH...."
 cp -v $HOME/.zshrc ${PROGDIR}/zshrc
-cp -vR $HOME/.oh-my-zsh/custom ${PROGDIR}/custom
+cp -vR $HOME/.oh-my-zsh/custom ${PROGDIR}/
 
 echo "GIT...."
 cp -v $HOME/.gitconfig ${PROGDIR}/gitconfig
@@ -20,7 +20,7 @@ mkdir -p ${PROGDIR}/vim/plugged
 ##  cp -vR $HOME/.vim/plugged/ ${PROGDIR}/vim/plugged
 
 echo "BREW..."
-# brew list --versions > brews
+brew list --versions > brews
 
 
 # EOF

@@ -35,6 +35,7 @@
     st = status
     stats = shortlog -sn
     rev = rev-list --reverse --pretty=format:'DIFFs %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --cherry-pick --right-only
+    allb = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
     ; lg = log -p
     ; l =  log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     ; lol = log --graph --decorate --pretty=oneline --abbrev-commit
@@ -42,11 +43,11 @@
     ; p = pull ; git submodule foreach git pull
 
 [user]
-    email = rodrigo.lima@ibm.com
+    email = <work-email>
     name = Rodrigo Lima
 
 [github]
-    user = rodrigo.lima@gmail.com
+    user = rodrigo-lima
     token = ABCD___SOMETHING
 
 [branch]
@@ -84,3 +85,6 @@
 
 [push]
     default = simple
+
+[oh-my-zsh]
+	hide-dirty = 1

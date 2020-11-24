@@ -1,35 +1,35 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/rolima/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # https://github.com/denysdovhan/spaceship-prompt
 # ZSH_THEME="kolo"
-ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="spaceship"
+export TERM="xterm-256color"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git colored-man-pages docker xcode golang swift node npm yarn gradle pyenv pip)
+plugins=(git colored-man-pages node nvm yarn npm npx)
 
 # User configuration
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export GOPATH=$HOME/Work/CODE/GOLANG
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:$HOME/bin"
-#export PYT_2=$HOME/Library/Python/2.7
-#export PATH="/usr/local/bin:$PYT_2/bin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:$MCLIMT"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:$HOME/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 #
-# KPCTL
-export VAULT_ADDR=https://vserv-eu.sos.ibm.com:8200
-export GITHUB_USER=rodrigo-lima
-
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export JDEV_HOME=$HOME/Oracle/Middleware/OH_12.2.1.3/jdeveloper
-# export PATH="/usr/local/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/go/libexec/bin:$GOPATH/bin:$JDEV_HOME/jdev/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:/scratch/helium/bin"
+# GIT
+#export GITHUB_USER=`whoami`
+#export GITHUB_TOKEN=...
 
 # OH_MY_ZSH
+DISABLE_UNTRACKED_FILES_DIRT="true"
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-export TERM="xterm-256color"
 
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
@@ -58,17 +58,26 @@ SPACESHIP_EXIT_CODE_SUFFIX=]
 # needed for GRV - https://github.com/rgburke/grv
 unalias grv
 
-# SWIFT
-if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# added by travis gem
-[ -f /Users/rolima/.travis/travis.sh ] && source /Users/rolima/.travis/travis.sh
+# RVM
+#unset PREFIX
+#nvm alias default 10.16.0
+#nvm use default
 
-# VAULT
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/vault vault
+fpath=($HOME/.oh-my-zsh/completions $fpath)
+autoload -U compinit && compinit
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# EOF ####
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+#EOF

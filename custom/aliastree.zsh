@@ -5,15 +5,34 @@
 #
 # -----------------------------------------
 # STUFF
+alias ls=exa
 alias tree='tree -C -sh'
 alias virc='vim ~/.vimrc'
 alias vizc='vim ~/.zshrc'
-#alias fixbrew='sudo chown -R $(whoami) $(brew --prefix)/*'
 alias fixbrew='sudo chown -R $(whoami) /usr/local/bin /usr/local/lib'
+
+# -----------------------------------------
+# REACT
+alias rn-reset='watchman watch-del-all && react-native start --reset-cache'
+# alias pkg-reset='watchman watch-del-all; yarn start-packager'
+alias pkg-reset='watchman watch-del-all ;
+yarn start-packager'
+alias repo-full-reset='watchman watch-del-all ;
+rm -rf ${TMPDIR}react-native-packager-cache-* ;
+rm -rf ${TMPDIR}metro-bundler-cache-* ;
+rm -rf ${TMPDIR}yarn-* ;
+yarn cache clean ;
+git clean -xdf ;
+cp ../bobrc.json .bobrc.json ;
+yarn;
+yarn install-native'
+
+# -----------------------------------------
+# PYTHON
 alias pipua="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 
-#alias syncDevTools='rsync -ahv --delete --timeout=10 --exclude=.git --exclude "**/*.ipa" --exclude "**/*.apk" --exclude "**/*.mp4" --exclude "**/*.zip" -P mwheatle@oracletap-ci.us.oracle.com:/Users/mwheatle/Work/AUTOMATION/DevTools/ $HOME/Work/AUTOMATION/DevTools'
-
+# -----------------------------------------
+# K8s
 bxcc() { eval $(bx cs cluster-config --export $1) }
 alias unbxcc='export KUBECONFIG='
 
@@ -58,14 +77,12 @@ alias dex="docker exec -i -t"
 # remove dangling images
 ddgl() { docker rmi $(docker images -f "dangling=true" -q); }
 
-# Stop all containers
-dstop() { docker stop $(docker ps -a -q); }
-
-# Remove all containers
-drm() { docker rm $(docker ps -a -q); }
+# Stop and Remove Runnning containers
+# alias drmf='docker stop $(docker ps -q) && docker rm $(docker ps -q)'
+drmf() { R="$(docker ps -q)"; docker stop $R && docker rm $R; }
 
 # Stop and Remove all containers
-alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias darmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
 # Remove all images
 dri() { docker rmi $(docker images -q); }
