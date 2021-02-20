@@ -25,14 +25,17 @@ yarn cache clean ;
 git clean -xdf ;
 cp ../bobrc.json .bobrc.json ;
 yarn;
-yarn install-native'
+bundle install --path vendor;
+cd ios;
+bundle exec pod install;
+cd ..'
 
 # -----------------------------------------
 # PYTHON
 alias pipua="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U"
 
 # -----------------------------------------
-# K8s
+# K8s / IBM
 bxcc() { eval $(bx cs cluster-config --export $1) }
 alias unbxcc='export KUBECONFIG='
 
